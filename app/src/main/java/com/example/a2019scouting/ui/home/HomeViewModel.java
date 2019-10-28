@@ -10,7 +10,8 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        //Set's the text for the home - screen
+        mText.setValue("Welcome to the 2019 MRT3216 Scouting app!");
     }
 
     public LiveData<String> getText() {
