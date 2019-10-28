@@ -1,4 +1,4 @@
-package com.example.a2019scouting.ui.gallery;
+package com.example.a2019scouting.ui.browseEntrys;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.a2019scouting.R;
 
-public class GalleryFragment extends Fragment {
+public class BrowseEntrysFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private BrowseEntrysViewModel browseEntrysViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        browseEntrysViewModel =
+                ViewModelProviders.of(this).get(BrowseEntrysViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_share, container, false);
+        final TextView textView = root.findViewById(R.id.text_share);
+        browseEntrysViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -1,4 +1,4 @@
-package com.example.a2019scouting.ui.share;
+package com.example.a2019scouting.ui.sendData;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.a2019scouting.R;
 
-public class ShareFragment extends Fragment {
+public class SendDataFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private SendDataViewModel sendDataViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        sendDataViewModel =
+                ViewModelProviders.of(this).get(SendDataViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_send, container, false);
+        final TextView textView = root.findViewById(R.id.text_send);
+        sendDataViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

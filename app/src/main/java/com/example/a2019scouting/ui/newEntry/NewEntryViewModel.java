@@ -1,17 +1,16 @@
-package com.example.a2019scouting.ui.home;
+package com.example.a2019scouting.ui.newEntry;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class NewEntryViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public NewEntryViewModel() {
         mText = new MutableLiveData<>();
-        //Set's the text for the home - screen
-        mText.setValue("Welcome to the 2019 MRT3216 Scouting app!" +
+        mText.setValue("ADD ENTRY ACTIVITY HERE" +
                 "SoMETIMES\n" +
                 "\n" +
                 "God TaKes MOMMIES\n" +

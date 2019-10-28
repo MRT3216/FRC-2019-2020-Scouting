@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.a2019scouting.ui.gallery.GalleryFragment"
+        android:name="com.example.a2019scouting.ui.help.HelpFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.a2019scouting.ui.slideshow.SlideshowFragment"
+        android:name="com.example.a2019scouting.ui.newEntry.NewEntryFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
@@ -31,13 +31,13 @@
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.a2019scouting.ui.share.ShareFragment"
+        android:name="com.example.a2019scouting.ui.browseEntrys.BrowseEntrysFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.a2019scouting.ui.send.SendFragment"
+        android:name="com.example.a2019scouting.ui.sendData.SendDataFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 </navigation>

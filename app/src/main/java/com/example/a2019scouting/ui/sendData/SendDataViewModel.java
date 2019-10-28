@@ -1,17 +1,16 @@
-package com.example.a2019scouting.ui.home;
+package com.example.a2019scouting.ui.sendData;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class SendDataViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public SendDataViewModel() {
         mText = new MutableLiveData<>();
-        //Set's the text for the home - screen
-        mText.setValue("Welcome to the 2019 MRT3216 Scouting app!" +
+        mText.setValue("This is send fragment" +
                 "SoMETIMES\n" +
                 "\n" +
                 "God TaKes MOMMIES\n" +
