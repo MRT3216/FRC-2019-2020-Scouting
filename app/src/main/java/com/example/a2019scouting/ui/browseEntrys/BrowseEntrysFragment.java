@@ -33,7 +33,7 @@ public class BrowseEntrysFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_share, container, false);
         final TextView mainView = root.findViewById(R.id.MainViewer);
 
-
+        //region inits the reader and reads from the file.
         String in = readFromFile();
 
 
@@ -54,7 +54,7 @@ public class BrowseEntrysFragment extends Fragment {
         String ret = "";
 
         try {
-            InputStream inputStream = context.openFileInput("ass.txt");
+            InputStream inputStream = context.openFileInput("log.txt");
 
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);

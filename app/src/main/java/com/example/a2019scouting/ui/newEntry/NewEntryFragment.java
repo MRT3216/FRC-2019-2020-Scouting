@@ -23,6 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.opencsv.CSVWriter;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -131,18 +132,28 @@ public class NewEntryFragment extends Fragment {
     }
 
     public void writeToFile(int stillwrites, String[] data) {
-        Context context = getContext();
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("ass.txt", Context.MODE_PRIVATE));
-            for (int i=1;i<=stillwrites;i++)
-            {
-                outputStreamWriter.write(data[i] + "|");
+        Context context = getContext();try{
+            File log = new File("log.txt");
+            if(!log.exists()){
+                System.out.println("We had to make a new file.");
+                log.createNewFile();
             }
-            outputStreamWriter.write("\n");
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+            FileWriter fileWriter = new FileWriter(log, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i=0;i<=stillwrites;i++)
+            {
+                bufferedWriter.write(data[i]+"|");
+
+            }
+            bufferedWriter.write("\n");
+            bufferedWriter.close();
+
+
+
+
+            System.out.println("Done");
+        } catch(IOException e) {
+            System.out.println("COULD NOT LOG!!");
         }
     }
 
