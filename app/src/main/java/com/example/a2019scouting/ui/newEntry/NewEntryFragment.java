@@ -66,18 +66,19 @@ public class NewEntryFragment extends Fragment {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 //region inits strings from EditText objects
-                String teamName = txtTeamName.getText().toString();
-                String teamNum = txtTeamNum.getText().toString();
-                String levelStartedOn = spLevelStartedOn.getSelectedItem().toString();
-                String hatchesPlacedSandstorm = txtHatchesPlacedSandstorm.getText().toString();
-                String CargoPlacedSandstrom = txtCargoPlacedSandstorm.getText().toString();
-                String authonomousCamera = spAutonomousCamera.getSelectedItem().toString();
-                String hatchesPlacedTeleop = txtHatchesPlacedTeleop.getText().toString();
-                String cargoPlacedteleop = txtCargoPlacedTeleop.getText().toString();
-                String rocketsFilled = txtRocketsFilled.getText().toString();
-                String strategy = spStrategy.getSelectedItem().toString();
-                String strategyOther = txtStrategyOther.getText().toString();
-                String notes = txtNotes.getText().toString();
+                String[] data = new String[20];
+                data[0] = txtTeamName.getText().toString();
+                data[1] = txtTeamNum.getText().toString();
+                data[2] = spLevelStartedOn.getSelectedItem().toString();
+                data[3] = txtHatchesPlacedSandstorm.getText().toString();
+                data[4] = txtCargoPlacedSandstorm.getText().toString();
+                data[5] = spAutonomousCamera.getSelectedItem().toString();
+                data[6] = txtHatchesPlacedTeleop.getText().toString();
+                data[7] = txtCargoPlacedTeleop.getText().toString();
+                data[8] = txtRocketsFilled.getText().toString();
+                data[9] = spStrategy.getSelectedItem().toString();
+                data[10] = txtStrategyOther.getText().toString();
+                data[11] = txtNotes.getText().toString();
 
                 //endregion
 
@@ -85,18 +86,10 @@ public class NewEntryFragment extends Fragment {
                 //region sets up the array we will pass to the writestream
                 String[] toWrite = new String[20];
 
-                toWrite[0] = teamName;
-                toWrite[1] = teamNum;
-                toWrite[2] = levelStartedOn;
-                toWrite[3] = hatchesPlacedSandstorm;
-                toWrite[4] = CargoPlacedSandstrom;
-                toWrite[5] = authonomousCamera;
-                toWrite[6] = hatchesPlacedTeleop;
-                toWrite[7] = cargoPlacedteleop;
-                toWrite[8] = rocketsFilled;
-                toWrite[9] = strategy;
-                toWrite[10] = strategyOther;
-                toWrite[11] = notes;
+                for(int i = 0; i < 12; i++){
+                    toWrite[i] = data[i];
+                }
+
 
                 //endregion
 
