@@ -23,6 +23,7 @@
     <string name="rockets_filled_hint">Rocket(s) filled</string>
     <string name="other_hint">Other</string>
     <string name="notes_hint">Anything else?</string>
+    <string name="clear_buttontext">Clear Entrys</string>
 
     <string name="sandstorm_header">Sandstorm</string>
     <string name="teleop_header">Teleop</string>

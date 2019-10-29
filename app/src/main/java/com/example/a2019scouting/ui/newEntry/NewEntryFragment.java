@@ -132,28 +132,36 @@ public class NewEntryFragment extends Fragment {
     }
 
     public void writeToFile(int stillwrites, String[] data) {
-        Context context = getContext();try{
-            File log = new File("log.txt");
-            if(!log.exists()){
-                System.out.println("We had to make a new file.");
-                log.createNewFile();
+        Context context = getContext();
+
+
+        try {
+            File file = new File("log.txt");
+            if(!file.exists()){
+
+                System.out.println("Please print ");
             }
-            FileWriter fileWriter = new FileWriter(log, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (int i=0;i<=stillwrites;i++)
+            else {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("log.txt", Context.MODE_PRIVATE));
+                outputStreamWriter.close();
+                System.out.println("No pls prnt");
+            }
+
+            OutputStreamWriter appendStreamWriter = new OutputStreamWriter(context.openFileOutput("log.txt", Context.MODE_APPEND));
+            for (int i = 0; i<=stillwrites; i++)
             {
-                bufferedWriter.write(data[i]+"|");
-
+                appendStreamWriter.write(data[i] + "|");
+                System.out.println(data[i]);
             }
-            bufferedWriter.write("\n");
-            bufferedWriter.close();
-
-
-
-
-            System.out.println("Done");
-        } catch(IOException e) {
-            System.out.println("COULD NOT LOG!!");
+            appendStreamWriter.write("\n");
+            appendStreamWriter.write("\n");
+            appendStreamWriter.write("\n");
+            appendStreamWriter.write("\n");
+            appendStreamWriter.write("\n");
+            appendStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
         }
     }
 
