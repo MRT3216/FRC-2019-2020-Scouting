@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.a2019scouting.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class NewEntryFragment extends Fragment {
 
@@ -23,13 +24,20 @@ public class NewEntryFragment extends Fragment {
         newEntryViewModel =
                 ViewModelProviders.of(this).get(NewEntryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
+        
+        /*
+        final TextView textView = root.findViewById(R.id.button2);
         newEntryViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+         */
         return root;
+
     }
+
+
 }
