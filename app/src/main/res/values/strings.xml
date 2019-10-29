@@ -13,4 +13,26 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Browse Current Entrys</string>
     <string name="menu_send">Send Data</string>
+    <string name="team_name_hint">Team Name</string>
+    <string name="team_number_hint">Team Number</string>
+    <string name="match_number_hint">Match Number</string>
+    <string name="hatches_place_hint">Hatches Placed</string>
+    <string name="cargo_place_hint">Cargo Placed</string>
+
+
+    <!-- arrays for the spinners -->
+    <string-array name="level_started_on">
+        <item>Level Started On</item>
+        <item>Off Platform</item>
+        <item>Level 1</item>
+        <item>Level 2</item>
+    </string-array>
+    <string-array name="autonomous_camera">
+        <item>Autonomous/Camera</item>
+        <item>Autonomous</item>
+        <item>Camera</item>
+        <item>Both</item>
+        <item>Unavailable</item>
+    </string-array>
+
 </resources>
