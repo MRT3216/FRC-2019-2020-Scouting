@@ -2,6 +2,7 @@ package com.example.a2019scouting.ui.newEntry;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +20,19 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.a2019scouting.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.opencsv.CSVWriter;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewEntryFragment extends Fragment {
 
@@ -34,11 +40,13 @@ public class NewEntryFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        String csv = (Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyCsvFile.csv");
         newEntryViewModel =
                 ViewModelProviders.of(this).get(NewEntryViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
 
 
+        //region gets the EditText objects from the XML listeners so they can be called later
         final EditText txtTeamName = root.findViewById(R.id.team_name);
         final EditText txtTeamNum = root.findViewById(R.id.team_name);
         final Spinner spLevelStartedOn = root.findViewById(R.id.level_started_on);
@@ -51,11 +59,13 @@ public class NewEntryFragment extends Fragment {
         final Spinner spStrategy = root.findViewById(R.id.Strategy);
         final EditText txtStrategyOther = root.findViewById(R.id.strategy_other);
         final EditText txtNotes = root.findViewById(R.id.notes);
+        //endregion
 
         final Button button = root.findViewById(R.id.submit_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                //region inits strings from EditText objects
                 String teamName = txtTeamName.getText().toString();
                 String teamNum = txtTeamNum.getText().toString();
                 String levelStartedOn = spLevelStartedOn.getSelectedItem().toString();
@@ -68,9 +78,48 @@ public class NewEntryFragment extends Fragment {
                 String strategy = spStrategy.getSelectedItem().toString();
                 String strategyOther = txtStrategyOther.getText().toString();
                 String notes = txtNotes.getText().toString();
-                writeToFile();
-                String read = readFromFile();
-                System.out.println(read);
+
+                //endregion
+
+
+                //region sets up the array we will pass to the writestream
+                String[] toWrite = new String[20];
+
+                toWrite[0] = teamName;
+                toWrite[1] = teamNum;
+                toWrite[2] = levelStartedOn;
+                toWrite[3] = hatchesPlacedSandstorm;
+                toWrite[4] = CargoPlacedSandstrom;
+                toWrite[5] = authonomousCamera;
+                toWrite[6] = hatchesPlacedTeleop;
+                toWrite[7] = cargoPlacedteleop;
+                toWrite[8] = rocketsFilled;
+                toWrite[9] = strategy;
+                toWrite[10] = strategyOther;
+                toWrite[11] = notes;
+
+                //endregion
+
+
+                //finally writes to the fucking file
+                writeToFile(12,toWrite);
+
+                //region clears the form after it's submitted
+                clearText(txtTeamName);
+                clearText(txtTeamNum);
+                clearSpin(spLevelStartedOn);
+                clearText(txtHatchesPlacedSandstorm);
+                clearText(txtCargoPlacedSandstorm);
+                clearSpin(spAutonomousCamera);
+                clearText(txtHatchesPlacedTeleop);
+                clearText(txtCargoPlacedTeleop);
+                clearText(txtRocketsFilled);
+                clearSpin(spStrategy);
+                clearText(txtStrategyOther);
+                clearText(txtNotes);
+                //endregion
+
+
             }
         });
 
@@ -88,11 +137,15 @@ public class NewEntryFragment extends Fragment {
         return root;
     }
 
-    public void writeToFile() {
+    public void writeToFile(int stillwrites, String[] data) {
         Context context = getContext();
         try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write("assssss");
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("ass.txt", Context.MODE_PRIVATE));
+            for (int i=1;i<=stillwrites;i++)
+            {
+                outputStreamWriter.write(data[i] + "|");
+            }
+            outputStreamWriter.write("\n");
             outputStreamWriter.close();
         }
         catch (IOException e) {
@@ -105,7 +158,7 @@ public class NewEntryFragment extends Fragment {
         String ret = "";
 
         try {
-            InputStream inputStream = context.openFileInput("config.txt");
+            InputStream inputStream = context.openFileInput("ass.txt");
 
             if ( inputStream != null ) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -127,6 +180,16 @@ public class NewEntryFragment extends Fragment {
             Log.e("login activity", "Can not read file: " + e.toString());
         }
         return ret;
+    }
+
+    public void clearText (EditText toClear)
+    {
+        toClear.getText().clear();
+    }
+
+    public void clearSpin (Spinner toClear)
+    {
+        toClear.setSelection(0);
     }
 
 
