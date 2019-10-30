@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class NewEntryFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
 
 
+
         //region gets the EditText objects from the XML listeners so they can be called later
         final EditText txtTeamName = root.findViewById(R.id.team_name);
         final EditText txtTeamNum = root.findViewById(R.id.team_name);
@@ -66,6 +68,10 @@ public class NewEntryFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+
+                // Checks if all data is filled out in the fom
+                boolean allDataFilledOut = true;
+
                 //region inits strings from EditText objects
                 String[] data = new String[20];
                 data[0] = txtTeamName.getText().toString();
@@ -89,29 +95,38 @@ public class NewEntryFragment extends Fragment {
 
                 for(int i = 0; i < 12; i++){
                     toWrite[i] = data[i];
+                    if(allDataFilledOut && data[i].isEmpty()){
+                        allDataFilledOut = false;
+                    }
                 }
 
 
                 //endregion
 
 
-                //finally writes to the fucking file
-                writeToFile(12,toWrite);
 
-                //region clears the form after it's submitted
-                clearText(txtTeamName);
-                clearText(txtTeamNum);
-                clearSpin(spLevelStartedOn);
-                clearText(txtHatchesPlacedSandstorm);
-                clearText(txtCargoPlacedSandstorm);
-                clearSpin(spAutonomousCamera);
-                clearText(txtHatchesPlacedTeleop);
-                clearText(txtCargoPlacedTeleop);
-                clearText(txtRocketsFilled);
-                clearSpin(spStrategy);
-                clearText(txtStrategyOther);
-                clearText(txtNotes);
-                //endregion
+
+
+                // finally writes to the fucking file and checks if all the data is filled out and clears the forms
+
+                if(allDataFilledOut) {
+                    writeToFile(12, toWrite);
+                    clearText(txtTeamName);
+                    clearText(txtTeamNum);
+                    clearSpin(spLevelStartedOn);
+                    clearText(txtHatchesPlacedSandstorm);
+                    clearText(txtCargoPlacedSandstorm);
+                    clearSpin(spAutonomousCamera);
+                    clearText(txtHatchesPlacedTeleop);
+                    clearText(txtCargoPlacedTeleop);
+                    clearText(txtRocketsFilled);
+                    clearSpin(spStrategy);
+                    clearText(txtStrategyOther);
+                    clearText(txtNotes);
+                }
+                else {
+                    Toast.makeText(root.getContext(),"Please fill out all data",Toast.LENGTH_SHORT).show();
+                }
 
 
             }
