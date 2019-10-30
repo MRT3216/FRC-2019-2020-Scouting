@@ -107,7 +107,7 @@ public class NewEntryFragment extends Fragment {
 
 
 
-                // finally writes to the fucking file and checks if all the data is filled out and clears the forms
+                //region finally writes to the fucking file and checks if all the data is filled out and clears the forms
 
                 if(allDataFilledOut) {
                     writeToFile(12, toWrite);
@@ -132,7 +132,7 @@ public class NewEntryFragment extends Fragment {
             }
         });
 
-
+                //endregion
         /*
         final TextView textView = root.findViewById(R.id.button2);
         newEntryViewModel.getText().observe(this, new Observer<String>() {
