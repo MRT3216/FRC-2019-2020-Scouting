@@ -10,18 +10,7 @@ public class HelpViewModel extends ViewModel {
 
     public HelpViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("ADD HELP INFORMATION HERE" +
-                "SoMETIMES\n" +
-                "\n" +
-                "God TaKes MOMMIES\n" +
-                "\n" +
-                "aNd PuPPIES AWAY…\n" +
-                "\n" +
-                "And SoMETIMES…\n" +
-                "\n" +
-                "Just SoMETIMES…\n" +
-                "\n" +
-                " I do.");
+        mText.setValue("Click on the new entry tab. Then, fill out all the data for that match. You will not be able to submit the round unless all information is filled out.");
     }
 
     public LiveData<String> getText() {
